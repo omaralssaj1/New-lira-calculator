@@ -1,0 +1,112 @@
+body {
+  font-family: 'Cairo', sans-serif;
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  min-height: 100vh;
+  margin: 0;
+  direction: rtl;
+  text-align: center;
+}
+
+body.dark {
+  background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
+  color: #f1f1f1;
+}
+
+/* أزرار فوق */
+.top-controls {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  gap: 8px;
+  z-index: 1000;
+}
+
+.top-controls button {
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: white;
+  cursor: pointer;
+}
+
+body.dark .top-controls button {
+  background: #333;
+  color: white;
+  border-color: #fff;
+}
+
+/* الصندوق */
+.container {
+  background: rgba(255,255,255,0.97);
+  width: 92%;
+  max-width: 520px;
+  margin: 90px auto 40px;
+  padding: 25px;
+  border-radius: 22px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+body.dark .container {
+  background: rgba(40,40,40,0.97);
+}
+
+.subtitle {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+input {
+  width: 85%;
+  padding: 14px;
+  font-size: 20px;
+  border-radius: 14px;
+  border: 1px solid #aaa;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+#calcBtn {
+  padding: 14px 40px;
+  font-size: 20px;
+  border-radius: 16px;
+  border: none;
+  background: #333;
+  color: white;
+  cursor: pointer;
+}
+
+.result-box {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 16px;
+  font-size: 22px;
+  border: 2px dashed #333;
+}
+
+.bill {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  font-size: 22px;
+}
+
+/* ألوان الفئات */
+.bill-500 { background: #e6c86e; }
+.bill-200 { background: #7fa97f; }
+.bill-100 { background: #d1b3e0; }
+.bill-50  { background: #f7b267; }
+.bill-25  { background: #3b6fb6; color: #fff; }
+.bill-10  { background: #f2b6c6; }
+
+.note {
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.footer {
+  margin-top: 25px;
+  font-size: 14px;
+  opacity: 0.7;
+}
