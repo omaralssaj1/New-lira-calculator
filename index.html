@@ -14,6 +14,7 @@
 <div class="top-controls">
   <button id="langBtn" onclick="toggleLang()">EN</button>
   <button onclick="toggleDark()">🌙</button>
+  <button onclick="toggleSenior()">👴</button>
 </div>
 
 <div class="container">
@@ -24,7 +25,11 @@
   </p>
 
   <input type="number" id="amount" placeholder="مثال: 12345">
-  <button id="calcBtn" onclick="calculate()">احسبلي</button>
+
+  <div class="buttons">
+    <button id="calcBtn" onclick="calculate()">احسبلي</button>
+    <button id="resetBtn" onclick="resetCalc()">🔄 إعادة الحساب</button>
+  </div>
 
   <div id="result"></div>
 
