@@ -11,6 +11,10 @@ body.dark {
   color: #f1f1f1;
 }
 
+body.senior {
+  font-size: 120%;
+}
+
 .top-controls {
   position: fixed;
   top: 15px;
@@ -46,8 +50,14 @@ input {
   text-align: center;
 }
 
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
 button {
-  padding: 14px 40px;
+  padding: 14px 30px;
   font-size: 18px;
   border-radius: 16px;
   border: none;
@@ -59,6 +69,11 @@ button {
   color: white;
 }
 
+#resetBtn {
+  background: #888;
+  color: white;
+}
+
 .result-box {
   margin-top: 20px;
   padding: 15px;
@@ -67,27 +82,33 @@ button {
   border: 2px dashed #333;
 }
 
-/* مستطيل الفئة */
+/* الفئات */
 .bill {
-  margin-top: 12px;
-  padding: 12px;
-  border-radius: 14px;
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
-/* صورة العملة */
 .bill img {
   width: 70px;
   border-radius: 8px;
   background: #fff;
 }
 
-/* النص */
+body.senior .bill img {
+  width: 110px;
+}
+
 .bill-text {
   font-size: 20px;
   font-weight: 600;
+}
+
+body.senior .bill-text {
+  font-size: 26px;
 }
 
 /* ألوان الفئات */
