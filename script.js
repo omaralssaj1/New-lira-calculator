@@ -4,6 +4,15 @@ function toggleDark() {
   document.body.classList.toggle("dark");
 }
 
+function toggleSenior() {
+  document.body.classList.toggle("senior");
+}
+
+function resetCalc() {
+  document.getElementById("amount").value = "";
+  document.getElementById("result").innerHTML = "";
+}
+
 function toggleLang() {
   lang = lang === "ar" ? "en" : "ar";
 
@@ -23,6 +32,9 @@ function toggleLang() {
 
   document.getElementById("calcBtn").innerText =
     lang === "ar" ? "احسبلي" : "Calculate";
+
+  document.getElementById("resetBtn").innerText =
+    lang === "ar" ? "🔄 إعادة الحساب" : "🔄 Reset";
 
   document.getElementById("langBtn").innerText =
     lang === "ar" ? "EN" : "AR";
@@ -65,21 +77,11 @@ function calculate() {
     if (count > 0) {
       result.innerHTML += `
         <div class="bill ${b.c}">
-          <img src="${b.img}" alt="${b.v}">
+          <img src="${b.img}">
           <div class="bill-text">${b.e} ${b.v} × ${count}</div>
         </div>
       `;
       value %= b.v;
     }
   });
-
-  if (value > 0) {
-    result.innerHTML += `
-      <div class="note">
-        ${lang === "ar"
-          ? `الباقي ${value} (يدفع بالعملة القديمة: ${value * 100})`
-          : `Remaining ${value} (pay ${value * 100} in old currency)`}
-      </div>
-    `;
-  }
 }
