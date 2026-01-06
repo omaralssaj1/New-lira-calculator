@@ -3,24 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="حاسبة الليرة الجديدة بعد حذف صفرين">
-  <meta name="theme-color" content="#333333">
-
   <title>حاسبة الليرة الجديدة</title>
-  <link rel="icon" href="favicon.png" type="image/png">
 
+  <link rel="icon" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- أزرار خارج الصندوق -->
 <div class="top-controls">
   <button id="langBtn" onclick="toggleLang()">EN</button>
   <button onclick="toggleDark()">🌙</button>
 </div>
 
-<!-- صندوق الحاسبة -->
 <div class="container">
   <h1 id="title">💰 حاسبة الليرة الجديدة</h1>
 
@@ -29,7 +24,6 @@
   </p>
 
   <input type="number" id="amount" placeholder="مثال: 12345">
-
   <button id="calcBtn" onclick="calculate()">احسبلي</button>
 
   <div id="result"></div>
@@ -37,7 +31,7 @@
   <footer class="footer">
     © 2026 – أداة مساعدة لحساب الليرة الجديدة  
     <br>
-    لا نخزن أي بيانات
+    لا تخزن أي بيانات  
     <br>
     <span class="company-footer">
       ALSSAJ .CO
