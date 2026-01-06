@@ -1,104 +1,48 @@
-let currentLang = "ar";
-
-const texts = {
-  ar: {
-    title: "💰 حاسبة الليرة الجديدة",
-    subtitle: "حط مبلغ الفاتورة، ونحن منحسبها عنك 😌",
-    placeholder: "مثال: 12345",
-    calcBtn: "احسبلي",
-    give: "أعطي البائع هالفئات 👇",
-    after: "👉 المبلغ بعد إزالة صفرين:",
-    invalid: "❌ دخيلك حط رقم مظبوط",
-    remain: "⚠️ ضل",
-    oldPay: "👉 هاد بيندفع بالعملة القديمة:",
-    extra: "🔁 كمان في باقي:"
-  },
-  en: {
-    title: "💰 New Lira Calculator",
-    subtitle: "Enter the bill amount and we’ll calculate it for you 😊",
-    placeholder: "Example: 12345",
-    calcBtn: "Calculate",
-    give: "Give the seller these bills 👇",
-    after: "👉 Amount after removing two zeros:",
-    invalid: "❌ Please enter a valid number",
-    remain: "⚠️ Remaining",
-    oldPay: "👉 Pay this in old currency:",
-    extra: "🔁 Extra remainder:"
-  }
-};
+function toggleDark() {
+  document.body.classList.toggle("dark");
+}
 
 function toggleLang() {
-  currentLang = currentLang === "ar" ? "en" : "ar";
-
-  document.getElementById("title").innerText = texts[currentLang].title;
-  document.getElementById("subtitle").innerText = texts[currentLang].subtitle;
-  document.getElementById("amount").placeholder = texts[currentLang].placeholder;
-  document.getElementById("calcBtn").innerText = texts[currentLang].calcBtn;
-  document.getElementById("langBtn").innerText =
-    currentLang === "ar" ? "EN" : "AR";
-
-  document.getElementById("result").innerHTML = "";
+  alert("تبديل اللغة لاحقًا 😄");
 }
 
 function calculate() {
-  const amount = Number(document.getElementById("amount").value.trim());
-  const resultDiv = document.getElementById("result");
-  resultDiv.innerHTML = "";
+  const amount = Number(document.getElementById("amount").value);
+  const result = document.getElementById("result");
+  result.innerHTML = "";
 
-  if (!Number.isFinite(amount) || amount <= 0) {
-    resultDiv.innerHTML = texts[currentLang].invalid;
+  if (!amount || amount <= 0) {
+    result.innerHTML = "❌ دخل رقم صحيح";
     return;
   }
 
-  let newAmount = Math.floor(amount / 100);
-  let remainderOld = amount % 100;
+  let value = Math.floor(amount / 100);
 
   const bills = [
-    { value: 500, emoji: "🌾", class: "bill-500" },
-    { value: 200, emoji: "🫒", class: "bill-200" },
-    { value: 100, emoji: "🌺", class: "bill-100" },
-    { value: 50, emoji: "🍊", class: "bill-50" },
-    { value: 25, emoji: "🫐", class: "bill-25" },
-    { value: 10, emoji: "🌸", class: "bill-10" }
+    { v: 500, img: "images/500.png", c: "bill-500" },
+    { v: 200, img: "images/200.png", c: "bill-200" },
+    { v: 100, img: "images/100.png", c: "bill-100" },
+    { v: 50,  img: "images/50.png",  c: "bill-50" },
+    { v: 25,  img: "images/25.png",  c: "bill-25" },
+    { v: 10,  img: "images/10.png",  c: "bill-10" }
   ];
 
-  resultDiv.innerHTML += `
+  result.innerHTML += `
     <div class="result-box">
-      ${texts[currentLang].after} <strong>${newAmount}</strong>
+      المبلغ بعد حذف صفرين: <strong>${value}</strong>
     </div>
-    <h3>${texts[currentLang].give}</h3>
   `;
 
-  bills.forEach(bill => {
-    let count = Math.floor(newAmount / bill.value);
+  bills.forEach(b => {
+    let count = Math.floor(value / b.v);
     if (count > 0) {
-      resultDiv.innerHTML += `
-        <div class="bill ${bill.class}">
-          ${bill.emoji} ${bill.value} × ${count}
+      result.innerHTML += `
+        <div class="bill ${b.c}">
+          <img src="${b.img}">
+          <div class="bill-text">${b.v} × ${count}</div>
         </div>
       `;
-      newAmount %= bill.value;
+      value %= b.v;
     }
   });
-
-  if (newAmount > 0) {
-    resultDiv.innerHTML += `
-      <div class="note">
-        ${texts[currentLang].remain} ${newAmount}<br>
-        ${texts[currentLang].oldPay} ${newAmount * 100}
-      </div>
-    `;
-  }
-
-  if (remainderOld > 0) {
-    resultDiv.innerHTML += `
-      <div class="note">
-        ${texts[currentLang].extra} ${remainderOld}
-      </div>
-    `;
-  }
-}
-
-function toggleDark() {
-  document.body.classList.toggle("dark");
 }
