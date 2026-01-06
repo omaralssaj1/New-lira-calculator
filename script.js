@@ -64,7 +64,11 @@ function calculate() {
     return;
   }
 
-  let value = Math.floor(amount / 100);
+  // المبلغ بعد حذف صفرين
+  let newAmount = Math.floor(amount / 100);
+
+  // الباقي بالعملة القديمة (أقل من 100)
+  let remainderOld = amount % 100;
 
   const bills = [
     { v: 500, img: "images/500.png", c: "bill-500", e: "🌾" },
@@ -78,22 +82,8 @@ function calculate() {
   result.innerHTML += `
     <div class="result-box">
       ${lang === "ar" ? "المبلغ بعد حذف صفرين:" : "Amount after removing two zeros:"}
-      <strong>${value}</strong>
+      <strong>${newAmount}</strong>
     </div>
   `;
 
-  bills.forEach(b => {
-    let count = Math.floor(value / b.v);
-    if (count > 0) {
-      result.innerHTML += `
-        <div class="bill ${b.c}">
-          <img src="${b.img}">
-          <div class="bill-text">
-            ${seniorMode ? `× ${count}` : `${b.e} ${b.v} × ${count}`}
-          </div>
-        </div>
-      `;
-      value %= b.v;
-    }
-  });
-}
+  // توزيع ال
