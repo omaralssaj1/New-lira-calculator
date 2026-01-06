@@ -1,11 +1,20 @@
 let lang = "ar";
+let seniorMode = false;
 
 function toggleDark() {
   document.body.classList.toggle("dark");
 }
 
 function toggleSenior() {
+  seniorMode = !seniorMode;
   document.body.classList.toggle("senior");
+
+  const btn = document.getElementById("seniorBtn");
+  btn.classList.toggle("active-senior");
+
+  if (document.getElementById("amount").value) {
+    calculate();
+  }
 }
 
 function resetCalc() {
@@ -48,9 +57,10 @@ function calculate() {
   result.innerHTML = "";
 
   if (!amount || amount <= 0) {
-    result.innerHTML = lang === "ar"
-      ? "❌ دخيلك دخل رقم صحيح"
-      : "❌ Please enter a valid number";
+    result.innerHTML =
+      lang === "ar"
+        ? "❌ دخيلك دخل رقم صحيح"
+        : "❌ Please enter a valid number";
     return;
   }
 
@@ -78,7 +88,9 @@ function calculate() {
       result.innerHTML += `
         <div class="bill ${b.c}">
           <img src="${b.img}">
-          <div class="bill-text">${b.e} ${b.v} × ${count}</div>
+          <div class="bill-text">
+            ${seniorMode ? `× ${count}` : `${b.e} ${b.v} × ${count}`}
+          </div>
         </div>
       `;
       value %= b.v;
