@@ -11,7 +11,6 @@ body.dark {
   color: #f1f1f1;
 }
 
-/* وضع كبار السن */
 body.senior {
   font-size: 120%;
 }
@@ -32,7 +31,6 @@ body.senior {
   cursor: pointer;
 }
 
-/* زر كبار السن عند التفعيل */
 .top-controls button.active-senior {
   background-color: #ffcc66;
   color: #000;
@@ -97,7 +95,7 @@ button {
   border: 2px dashed #333;
 }
 
-/* مستطيل الفئة */
+/* الفئات */
 .bill {
   margin-top: 14px;
   padding: 14px;
@@ -107,37 +105,50 @@ button {
   gap: 14px;
 }
 
-/* صورة العملة */
 .bill img {
   width: 70px;
   border-radius: 8px;
   background: #fff;
 }
 
-/* تكبير الصورة بوضع كبار السن */
 body.senior .bill img {
   width: 140px;
 }
 
-/* النص */
 .bill-text {
   font-size: 20px;
   font-weight: 600;
 }
 
-/* بوضع كبار السن: العدد فقط */
 body.senior .bill-text {
   font-size: 32px;
   font-weight: 700;
 }
 
-/* ألوان الفئات */
 .bill-500 { background: #e6c86e; }
 .bill-200 { background: #7fa97f; }
 .bill-100 { background: #d1b3e0; }
 .bill-50  { background: #f7b267; }
 .bill-25  { background: #3b6fb6; color: #fff; }
 .bill-10  { background: #f2b6c6; }
+
+/* ملاحظات الباقي */
+.note {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  background: #fff3cd;
+  color: #000;
+  border: 1px solid #ffeeba;
+}
+
+body.dark .note {
+  background: #3a3a2a;
+  color: #fff;
+  border-color: #666;
+}
 
 .footer {
   margin-top: 25px;
