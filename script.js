@@ -64,10 +64,7 @@ function calculate() {
     return;
   }
 
-  // المبلغ بعد حذف صفرين
   let newAmount = Math.floor(amount / 100);
-
-  // الباقي بالعملة القديمة (أقل من 100)
   let remainderOld = amount % 100;
 
   const bills = [
@@ -86,4 +83,44 @@ function calculate() {
     </div>
   `;
 
-  // توزيع ال
+  bills.forEach(b => {
+    let count = Math.floor(newAmount / b.v);
+    if (count > 0) {
+      result.innerHTML += `
+        <div class="bill ${b.c}">
+          <img src="${b.img}">
+          <div class="bill-text">
+            ${seniorMode ? `× ${count}` : `${b.e} ${b.v} × ${count}`}
+          </div>
+        </div>
+      `;
+      newAmount %= b.v;
+    }
+  });
+
+  // باقي الفئات بعد توزيع الفئات الجديدة
+  if (newAmount > 0) {
+    result.innerHTML += `
+      <div class="note">
+        ${
+          lang === "ar"
+            ? `⚠️ الباقي ${newAmount} (يدفع بالعملة القديمة: ${newAmount * 100})`
+            : `⚠️ Remaining ${newAmount} (pay ${newAmount * 100} in old currency)`
+        }
+      </div>
+    `;
+  }
+
+  // باقي أقل من 100 من المبلغ الأصلي
+  if (remainderOld > 0) {
+    result.innerHTML += `
+      <div class="note">
+        ${
+          lang === "ar"
+            ? `🔁 باقي أقل من 100 بالعملة القديمة: ${remainderOld}`
+            : `🔁 Extra old-currency remainder: ${remainderOld}`
+        }
+      </div>
+    `;
+  }
+}
