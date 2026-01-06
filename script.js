@@ -1,6 +1,13 @@
 let lang = "ar";
 let seniorMode = false;
 
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("calcBtn").addEventListener("click", calculate);
+  document.getElementById("resetBtn").addEventListener("click", resetCalc);
+  document.getElementById("langBtn").addEventListener("click", toggleLang);
+  document.getElementById("seniorBtn").addEventListener("click", toggleSenior);
+});
+
 function toggleDark() {
   document.body.classList.toggle("dark");
 }
@@ -98,7 +105,6 @@ function calculate() {
     }
   });
 
-  // باقي الفئات بعد توزيع الفئات الجديدة
   if (newAmount > 0) {
     result.innerHTML += `
       <div class="note">
@@ -111,7 +117,6 @@ function calculate() {
     `;
   }
 
-  // باقي أقل من 100 من المبلغ الأصلي
   if (remainderOld > 0) {
     result.innerHTML += `
       <div class="note">
