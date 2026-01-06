@@ -2,10 +2,14 @@ let lang = "ar";
 let seniorMode = false;
 
 document.addEventListener("DOMContentLoaded", function() {
+
+  // ربط كل الأزرار
   document.getElementById("calcBtn").addEventListener("click", calculate);
   document.getElementById("resetBtn").addEventListener("click", resetCalc);
   document.getElementById("langBtn").addEventListener("click", toggleLang);
   document.getElementById("seniorBtn").addEventListener("click", toggleSenior);
+  document.getElementById("darkBtn").addEventListener("click", toggleDark);
+
 });
 
 function toggleDark() {
@@ -19,9 +23,7 @@ function toggleSenior() {
   const btn = document.getElementById("seniorBtn");
   btn.classList.toggle("active-senior");
 
-  if (document.getElementById("amount").value) {
-    calculate();
-  }
+  if (document.getElementById("amount").value) calculate();
 }
 
 function resetCalc() {
